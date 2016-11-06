@@ -1,0 +1,89 @@
+table tr td
+{
+	vertical-align: middle !important;
+}
+
+#graphSchedule
+{
+	height: 720px;
+	padding-top: 30px;
+	margin-bottom: 50px;
+	overflow-y: scroll;
+}
+
+#graphSchedule .hours
+{
+	float: left;
+	display: block;
+	height: 100%;
+	width: 4%;
+	max-width: 50px;
+}
+
+#graphSchedule .hours span
+{
+	font-size: small;
+	display: block;
+	text-align: center;
+	height: 60px;
+	border-top: 1px solid #CCCCCC;
+}
+
+#graphSchedule .hours span:nth-child(7)
+{
+	border-top-width: 3px;
+}
+
+#graphSchedule .hours span:last-child
+{
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#graphSchedule .day
+{
+	float:left;
+	position: relative;
+	display:block;
+	height: 100%;
+	width: 19.2%;
+	border-right: 1px solid #FFFFFF;
+}
+
+#graphSchedule .day:first-child
+{
+	margin-left: 0;
+}
+
+#graphSchedule .day:last-child
+{
+	margin-right: 0;
+	border-right: 0;
+}
+
+#graphSchedule .day span.dayLabel
+{
+	position: relative;
+	top: -30px;
+	border-right: 1px solid #CCCCCC;
+	font-size: small;
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+#graphSchedule .day:last-child span.dayLabel
+{
+	border-right: 0;
+}
+
+#graphSchedule .day .section
+{
+	position: absolute;
+	width: 100%;
+	padding: 5px 5px 5px 5px;
+	display: block;
+	background-color: #337ab7;
+	color: white;
+	text-align: center;
+	line-height: 100%;
+}
