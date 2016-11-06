@@ -2,6 +2,8 @@
 
 A webapp to help with scheduling college courses.
 
+![Screenshot](screenshot.jpg?raw=true)
+
 ## How to Use
 
 1. Add the classes you plan to take as well as all the sections available for that class.
