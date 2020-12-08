@@ -20,173 +20,180 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="col-xs-12">
-				<div class="page-header">
-					<h2>Class Scheduler <small class="pull-right"><button id="btnCreateSchedule" class="btn btn-success" disabled="disabled">Create Schedule</button></small></h2>
-				</div>
-
-				<div class="alert alert-danger" id="noSchedulesError" style="display:none;">
-					<b>Error:</b> Scheduling conflict. No valid schedules found.
-				</div>
-
-				<div class="panel panel-default" id="progressBox" style="display:none;">
-					<div class="panel-body" style="text-align:center">
-						Computing <span id="currentNum"></span> of <span id="totalNum"></span> schedules...<br /><br />
-						<div class="progress"><div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 45%"></div></div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="page-header">
+						<h2>Class Scheduler <small class="pull-right"><button id="btnCreateSchedule" class="btn btn-success" disabled="disabled">Create Schedule</button></small></h2>
 					</div>
-				</div>
 
-				<!--
-				<h3>Residence Hall</h3>
-				<div class="form">
-					<select id="residenceHall" class="form-control">
-						<option></option>	
-					</select>
-				</div>
-				-->
+					<div class="alert alert-danger" id="noSchedulesError" style="display:none;">
+						<b>Error:</b> Scheduling conflict. No valid schedules found.
+					</div>
 
-				<h3>Class List</h3>
-				<table class="table table-bordered table-hover" id="classList">
-					<tr id="classListHeader"><th>Dept.</th><th>Course</th><th>Name</th><th>Location</th><th>Days</th><th>Time</th><th></th></tr>
-					<tr id="classListPlaceholder"><td colspan="7">Add some classes below.</td></tr>
-				</table>
-				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a id="addClassAccordion" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add Class</a>
-							</h4>
+					<div class="panel panel-default" id="progressBox" style="display:none;">
+						<div class="panel-body" style="text-align:center">
+							Computing <span id="currentNum"></span> of <span id="totalNum"></span> schedules...<br /><br />
+							<div class="progress"><div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 45%"></div></div>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">
-								<div id="alertBlankInput" class="alert alert-danger" style="display:none">Fields cannot be left blank.</div>
-								<div id="alertInvalidLocation" class="alert alert-danger" style="display:none">Please enter a valid location.</div>
-								<div id="alertInvalidTime" class="alert alert-danger" style="display:none">Please enter a valid time.</div>
-								<div id="alertInvalidTimeInterval" class="alert alert-danger" style="display:none">Please enter a valid time interval.</div>
-								<div id="alertBlankDays" class="alert alert-danger" style="display:none">Please select the days the section meets.</div>
-								<div id="alertNoSections" class="alert alert-danger" style="display:none">Please add at least one section.</div>
-								<div class="form-horizontal">
-									<div class="form-group">
-										<label for="classDept classCourse" class="col-sm-2 control-label">Course Number</label>
-										<div class="col-sm-10">
-											<div class="form-inline">
-												<input id="classDept" type="text" class="form-control" size="5" placeholder="Dept" />&nbsp;<b>:</b>&nbsp;<input id="classCourse" type="text" class="form-control" size="5" placeholder="Course" />
+					</div>
+
+					<!--
+					<h3>Residence Hall</h3>
+					<div class="form">
+						<select id="residenceHall" class="form-control">
+							<option></option>
+						</select>
+					</div>
+					-->
+
+					<h3>Class List</h3>
+					<table class="table table-bordered table-hover" id="classList">
+						<tr id="classListHeader"><th>Dept.</th><th>Course</th><th>Name</th><th>Location</th><th>Days</th><th>Time</th><th></th></tr>
+						<tr id="classListPlaceholder"><td colspan="7">Add some classes below.</td></tr>
+					</table>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingOne">
+								<h4 class="panel-title">
+									<a id="addClassAccordion" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add Class</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div class="panel-body">
+									<div id="alertBlankInput" class="alert alert-danger" style="display:none">Fields cannot be left blank.</div>
+									<div id="alertInvalidLocation" class="alert alert-danger" style="display:none">Please enter a valid location.</div>
+									<div id="alertInvalidTime" class="alert alert-danger" style="display:none">Please enter a valid time.</div>
+									<div id="alertInvalidTimeInterval" class="alert alert-danger" style="display:none">Please enter a valid time interval.</div>
+									<div id="alertBlankDays" class="alert alert-danger" style="display:none">Please select the days the section meets.</div>
+									<div id="alertNoSections" class="alert alert-danger" style="display:none">Please add at least one section.</div>
+									<div class="form-horizontal">
+										<div class="form-group">
+											<label for="classDept classCourse" class="col-sm-2 control-label">Course Number</label>
+											<div class="col-sm-10">
+												<div class="form-inline">
+													<input id="classDept" type="text" class="form-control" size="5" placeholder="Dept" />&nbsp;<b>:</b>&nbsp;<input id="classCourse" type="text" class="form-control" size="5" placeholder="Course" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Name</label>
-										<div class="col-sm-10">
-											<input id="className" type="text" class="form-control" />
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label">Sections</label>
-										<div class="col-sm-10">
-											<table class="table table-bordered" id="sectionList">
-												<tr id="sectionListPlaceholder"><td>No sections added.</td></tr>
-											</table>
-											<div class="form-inline" id="sectionForm">
-												<input id="sectionLocation" type="text" class="form-control" placeholder="Location" size="30" data-provide="typeahead" autocomplete="off" />
-												<input id="sectionStartTime" type="text" class="form-control" placeholder="Start Time" size="10" />
-												<input id="sectionEndTime" type="text" class="form-control" placeholder="End Time" size="10" />&nbsp;&nbsp;&nbsp;&nbsp;
-												<label class="checkbox-inline"><input type="checkbox" id="sectionM" value="M"> M</label>
-												<label class="checkbox-inline"><input type="checkbox" id="sectionTu" value="Tu"> Tu</label>
-												<label class="checkbox-inline"><input type="checkbox" id="sectionW" value="W"> W</label>
-												<label class="checkbox-inline"><input type="checkbox" id="sectionTh" value="Th"> Th</label>
-												<label class="checkbox-inline"><input type="checkbox" id="sectionF" value="F"> F</label>&nbsp;&nbsp;&nbsp;&nbsp;
-												<button class="btn btn-primary" id="btnAddSection">Add Section</button>
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Name</label>
+											<div class="col-sm-10">
+												<input id="className" type="text" class="form-control" />
 											</div>
-											<hr class="hr" />
 										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-offset-2 col-sm-10">
-											<button class="btn btn-primary" id="btnAddClass">Add Class</button>
+										<div class="form-group">
+											<label class="col-sm-2 control-label">Sections</label>
+											<div class="col-sm-10">
+												<table class="table table-bordered" id="sectionList">
+													<tr id="sectionListPlaceholder"><td>No sections added.</td></tr>
+												</table>
+												<div class="form-inline" id="sectionForm">
+													<input id="sectionLocation" type="text" class="form-control" placeholder="Location" size="30" data-provide="typeahead" autocomplete="off" />
+													<input id="sectionStartTime" type="text" class="form-control" placeholder="Start Time" size="10" />
+													<input id="sectionEndTime" type="text" class="form-control" placeholder="End Time" size="10" />&nbsp;&nbsp;&nbsp;&nbsp;
+													<label class="checkbox-inline"><input type="checkbox" id="sectionM" value="M"> M</label>
+													<label class="checkbox-inline"><input type="checkbox" id="sectionTu" value="Tu"> Tu</label>
+													<label class="checkbox-inline"><input type="checkbox" id="sectionW" value="W"> W</label>
+													<label class="checkbox-inline"><input type="checkbox" id="sectionTh" value="Th"> Th</label>
+													<label class="checkbox-inline"><input type="checkbox" id="sectionF" value="F"> F</label>&nbsp;&nbsp;&nbsp;&nbsp;
+													<button class="btn btn-primary" id="btnAddSection">Add Section</button>
+												</div>
+												<hr class="hr" />
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-2 col-sm-10">
+												<button class="btn btn-primary" id="btnAddClass">Add Class</button>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+					<!--
+					<h3>
+						Map
+						<small class="pull-right">
+							<div class="btn-group">
+								<button id="btnMapMon" class="btn btn-default" disabled="disabled">M</button>
+								<button id="btnMapTues" class="btn btn-default" disabled="disabled">Tu</button>
+								<button id="btnMapWed" class="btn btn-default" disabled="disabled">W</button>
+								<button id="btnMapThurs" class="btn btn-default" disabled="disabled">Th</button>
+								<button id="btnMapFri" class="btn btn-default" disabled="disabled">F</button>
+							</div>
+						</small>
+					</h3>
+					<div id="map" style="height:500px;"></div>
+					-->
+
+					<div id="scheduleStats" style="display: none;">
+						<div class="col-xs-4">
+							<h3>Walking Distance</h3>
+							<div id="graphWalkingTimes" style="height:300px"></div>
+						</div>
+						<div class="col-xs-4">
+							<h3>Classes Per Day</h3>
+							<div id="graphClassesPerDay" style="height:300px"></div>
+						</div>
+						<div class="col-xs-4">
+							<h3>Time of First Class</h3>
+							<div id="graphFirstClassTimes" style="height:300px"></div>
+						</div>
+
+						<h3>Weekly Schedule</h3>
+						<div id="graphSchedule">
+							<div class="hours">
+								<span>6am</span>
+								<span>7am</span>
+								<span>8am</span>
+								<span>9am</span>
+								<span>10am</span>
+								<span>11am</span>
+								<span>12pm</span>
+								<span>1pm</span>
+								<span>2pm</span>
+								<span>3pm</span>
+								<span>4pm</span>
+								<span>5pm</span>
+								<span>6pm</span>
+								<span>7pm</span>
+								<span>8pm</span>
+								<span>9pm</span>
+								<span>10pm</span>
+								<span>11pm</span>
+								<span>12pm</span>
+							</div>
+							<div id="M" class="day">
+								<span class="dayLabel">M</span>
+							</div>
+							<div id="Tu" class="day">
+								<span class="dayLabel">Tu</span>
+							</div>
+							<div id="W" class="day">
+								<span class="dayLabel">W</span>
+							</div>
+							<div id="Th" class="day">
+								<span class="dayLabel">Th</span>
+							</div>
+							<div id="F" class="day">
+								<span class="dayLabel">F</span>
+							</div>
+						</div>
+					</div>
+
+					<h3>Possible Schedules</h3>
+					<table id="possibleSchedules" class="table table-bordered table-hover">
+						<tr id="possibleSchedulesHeader"><th>Star</th><th>Avg. Walking Distance / Day</th><th>Max Walking Distance / Day</th><th>Avg. Classes / Day</th><th>Max Classes / Day</th><th>Avg. First Class</th><th>Earliest Class</th><th></th></tr>
+						<tr id="possibleSchedulesPlaceholder"><td colspan="8">Click "Create Schedule" to generate possible schedules.</td></tr>
+					</table>
 				</div>
-
-				<!--
-				<h3>
-					Map
-					<small class="pull-right">
-						<div class="btn-group">
-							<button id="btnMapMon" class="btn btn-default" disabled="disabled">M</button>
-							<button id="btnMapTues" class="btn btn-default" disabled="disabled">Tu</button>
-							<button id="btnMapWed" class="btn btn-default" disabled="disabled">W</button>
-							<button id="btnMapThurs" class="btn btn-default" disabled="disabled">Th</button>
-							<button id="btnMapFri" class="btn btn-default" disabled="disabled">F</button>
-						</div>
-					</small>
-				</h3>
-				<div id="map" style="height:500px;"></div>
-				-->
-
-				<div id="scheduleStats" style="display: none;">
-					<div class="col-xs-4">
-						<h3>Walking Distance</h3>
-						<div id="graphWalkingTimes" style="height:300px"></div>
-					</div>
-					<div class="col-xs-4">
-						<h3>Classes Per Day</h3>
-						<div id="graphClassesPerDay" style="height:300px"></div>
-					</div>
-					<div class="col-xs-4">
-						<h3>Time of First Class</h3>
-						<div id="graphFirstClassTimes" style="height:300px"></div>
-					</div>
-
-					<h3>Weekly Schedule</h3>
-					<div id="graphSchedule">
-						<div class="hours">
-							<span>6am</span>
-							<span>7am</span>
-							<span>8am</span>
-							<span>9am</span>
-							<span>10am</span>
-							<span>11am</span>
-							<span>12pm</span>
-							<span>1pm</span>
-							<span>2pm</span>
-							<span>3pm</span>
-							<span>4pm</span>
-							<span>5pm</span>
-							<span>6pm</span>
-							<span>7pm</span>
-							<span>8pm</span>
-							<span>9pm</span>
-							<span>10pm</span>
-							<span>11pm</span>
-							<span>12pm</span>
-						</div>
-						<div id="M" class="day">
-							<span class="dayLabel">M</span>
-						</div>
-						<div id="Tu" class="day">
-							<span class="dayLabel">Tu</span>
-						</div>
-						<div id="W" class="day">
-							<span class="dayLabel">W</span>
-						</div>
-						<div id="Th" class="day">
-							<span class="dayLabel">Th</span>
-						</div>
-						<div id="F" class="day">
-							<span class="dayLabel">F</span>
-						</div>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-muted">
+					<p>Created by <a href="https://ianglen.me">Ian Glen</a></p>
 				</div>
-
-				<h3>Possible Schedules</h3>
-				<table id="possibleSchedules" class="table table-bordered table-hover">
-					<tr id="possibleSchedulesHeader"><th>Star</th><th>Avg. Walking Distance / Day</th><th>Max Walking Distance / Day</th><th>Avg. Classes / Day</th><th>Max Classes / Day</th><th>Avg. First Class</th><th>Earliest Class</th><th></th></tr>
-					<tr id="possibleSchedulesPlaceholder"><td colspan="8">Click "Create Schedule" to generate possible schedules.</td></tr>
-				</table>
 			</div>
 		</div>
 
